@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GLITCH SLIDER</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+        *,
+        *:after,
+        *:before {
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        body,
+        html {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        body {
+            background-color: #161616;
+            margin: 0;
+        }
+
+        p, a {
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        /*slider styles*/
+        .rgbShiftSlider {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*mix-blend-mode: hard-light;*/
+            opacity: 0.85;
+            width: 100vw;
+            height: 100%;
+            overflow: hidden;
+            /*transform-origin : 50vw 300vh;*/
+            transform-origin: 50% 50%;
+        }
+
+        canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 0;
+        }
+        
+        nav {
+            position: absolute;
+            top: 4vw;
+            left: 4vw;
+            z-index: 1;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 14px;
+        }
+    </style>
+
+    
+    <!-- slider -->
+    <div id="rbgShiftSlider" class="rgbShiftSlider"></div>
+
+    <!-- slider nav -->
+    <nav>
+        <a href="#" class="scene-nav prev" data-nav="previous">Prev</a>
+        <a href="#" class="scene-nav next" data-nav="next">Next</a>
+    </nav>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.7/pixi.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src="js/rgbShiftSlider.js"></script>
+    <script>
+
+  
+        // set images
+        var images = [
+  "http://hmongouachon.com/_demos/rgbShiftSlider/01-portrait-large.jpg",
+  "http://hmongouachon.com/_demos/rgbShiftSlider/02-portrait-large.jpg",
+  "http://hmongouachon.com/_demos/rgbShiftSlider/03-portrait-large.jpg",
+  "http://hmongouachon.com/_demos/rgbShiftSlider/04-portrait-large.jpg",
+  "http://hmongouachon.com/_demos/rgbShiftSlider/05-portrait-large.jpg",
+]
+        // instanciate slider
+        var rbgShiftSlider = new rbgShiftSlider({
+            nav : true,
+            navElement: '.scene-nav',
+            slideImages: images,
+            stageWidth: 1920,
+            stageHeight: 1080,
+            
+            displacementImage: 'http://hmongouachon.com/_demos/rgbShiftSlider/displace-circle.png',
+            fullScreen: true,
+            transitionDuration: 0.2, // must be 0.1 > transitionGhostDuration
+            transitionGhostDuration : 0.25,
+            transitionFilterIntensity: 350,
+            transitionSpriteIntensity: 2,
+            mouseDispIntensity: 3,
+            interactive : true,
+            autoPlay : true,
+            autoPlaySpeed : 5000,
+        });
+    </script>
+</body>
+
+</html>
